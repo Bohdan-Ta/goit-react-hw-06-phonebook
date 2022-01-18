@@ -1,5 +1,6 @@
 {
-  "name": "react-start",
+  "name": "goit-react-hw-06-phonebook",
+  "homepage": "https://bohdan-ta.github.io/goit-react-hw-06-phonebook",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,8 +13,10 @@
     "react": "^17.0.2",
     "react-debounce-input": "^3.2.5",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.1.0",
+    "redux": "^4.1.2",
     "use-lodash-debounce-throttle": "^0.3.5",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
@@ -25,7 +28,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,7 +53,8 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.0",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "redux-devtools-extension": "^2.13.9"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
