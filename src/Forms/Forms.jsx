@@ -1,7 +1,8 @@
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { connect } from "react-redux";
 import actions from "../redux/phonebook-ections";
+
 import s from "./Forms.module.css";
 
 const phoneRegExp =
@@ -13,7 +14,9 @@ const RegistrationSchema = Yup.object().shape({
     .required("Required"),
 });
 
-function Forms({ getSubmit }) {
+export default function Forms() {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -22,7 +25,7 @@ function Forms({ getSubmit }) {
     validationSchema: RegistrationSchema,
 
     onSubmit: (values, { resetForm }) => {
-      getSubmit(values);
+      dispatch(actions.addContact(values));
       resetForm();
     },
   });
@@ -62,9 +65,3 @@ function Forms({ getSubmit }) {
     </div>
   );
 }
-
-const mapDispatchToProps = (dispatch) => ({
-  getSubmit: (value) => dispatch(actions.addContact(value)),
-});
-
-export default connect(null, mapDispatchToProps)(Forms);

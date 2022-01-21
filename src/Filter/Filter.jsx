@@ -1,11 +1,16 @@
+import { useSelector, useDispatch } from "react-redux";
 import { DebounceInput } from "react-debounce-input";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+
 import actions from "../redux/phonebook-ections";
+import { getFilter } from "../redux/phonebook-selectors";
 
 import s from "./Filter.module.css";
 
-function Filter({ value, onChange }) {
+export default function Filter() {
+  const dispatch = useDispatch();
+  const value = useSelector(getFilter);
+  const onChange = (evt) => dispatch(actions.changeFilter(evt.target.value));
+
   return (
     <div className={s.form}>
       <label className={s.label}>
@@ -24,15 +29,3 @@ function Filter({ value, onChange }) {
     </div>
   );
 }
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-};
-
-const mapStateToProps = (state) => ({ value: state.contacts.filter });
-
-const mapDispatchToProps = (dispatch) => ({
-  onChange: (e) => dispatch(actions.changeFilter(e.target.value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
