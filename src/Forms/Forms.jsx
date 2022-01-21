@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { connect } from "react-redux";
+import actions from "../redux/phonebook-ections";
 import s from "./Forms.module.css";
 
 const phoneRegExp =
@@ -12,7 +13,7 @@ const RegistrationSchema = Yup.object().shape({
     .required("Required"),
 });
 
-export default function Forms({ getSubmit }) {
+function Forms({ getSubmit }) {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -61,3 +62,9 @@ export default function Forms({ getSubmit }) {
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  getSubmit: (value) => dispatch(actions.addContact(value)),
+});
+
+export default connect(null, mapDispatchToProps)(Forms);

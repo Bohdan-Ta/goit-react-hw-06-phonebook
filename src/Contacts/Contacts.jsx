@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 
 import s from "./Contacts.module.css";
 
-export default function Contacts({ contacts, onDeleteContact }) {
+import { connect } from "react-redux";
+import actions from "../redux/phonebook-ections";
+
+function Contacts({ contacts, onDeleteContact }) {
   return (
     <>
       <ul>
@@ -38,3 +41,20 @@ Contacts.propTypes = {
   ),
   onDeleteContact: PropTypes.func.isRequired,
 };
+
+const getSensitiveSearch = (items, filter) => {
+  const lowerCaseLetters = filter.toLowerCase().trim();
+  return items.filter((contact) =>
+    contact.name.toLowerCase().includes(lowerCaseLetters)
+  );
+};
+
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  contacts: getSensitiveSearch(items, filter),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onDeleteContact: (id) => dispatch(actions.deleteContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
