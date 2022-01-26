@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import actions from "../../redux/phonebook-ections";
+import actions from "../../redux/phonebook-actions";
 import { getSensitiveSearch } from "../../redux/phonebook-selectors";
 
 import s from "./Contacts.module.css";

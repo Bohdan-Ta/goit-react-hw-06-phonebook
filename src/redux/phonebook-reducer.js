@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import actions from "./phonebook-ections";
+import actions from "./phonebook-actions";
 
 const items = createReducer([], {
   [actions.addContact]: (state, { payload }) => {
@@ -18,7 +18,7 @@ const items = createReducer([], {
 });
 
 const filter = createReducer("", {
-  [actions.changeFilter]: (_, { payload }) => payload,
+  [actions.changeFilter]: (_state, { payload }) => payload,
 });
 
 export default combineReducers({

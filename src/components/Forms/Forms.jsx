@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import actions from "../../redux/phonebook-ections";
+import actions from "../../redux/phonebook-actions";
 
 import s from "./Forms.module.css";
 
@@ -22,6 +22,7 @@ export default function Forms() {
       name: "",
       number: "",
     },
+
     validationSchema: RegistrationSchema,
 
     onSubmit: (values, { resetForm }) => {
@@ -29,7 +30,7 @@ export default function Forms() {
       resetForm();
     },
   });
-
+  console.log(formik);
   return (
     <div className={s.inputContainer}>
       <form onSubmit={formik.handleSubmit}>

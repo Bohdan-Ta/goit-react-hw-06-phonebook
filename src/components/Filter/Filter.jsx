@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { DebounceInput } from "react-debounce-input";
 
-import actions from "../../redux/phonebook-ections";
+import actions from "../../redux/phonebook-actions";
 import { getFilter } from "../../redux/phonebook-selectors";
 
 import s from "./Filter.module.css";
