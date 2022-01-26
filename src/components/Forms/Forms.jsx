@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import actions from "../redux/phonebook-ections";
+import actions from "../../redux/phonebook-ections";
 
 import s from "./Forms.module.css";
 
